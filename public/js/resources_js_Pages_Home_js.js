@@ -62,22 +62,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header() {
+  var _usePage = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)(),
+      user = _usePage.props.user;
+
   var handleLogout = function handleLogout() {
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post("/logout");
     window.location = "/login";
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-    className: "header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.InertiaLink, {
-        href: "/",
-        children: "Home"
+  var renderAuthOption = function renderAuthOption() {
+    return user && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "authOption",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: user
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
         onClick: handleLogout,
         children: "Logout"
       })]
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    className: "header",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.InertiaLink, {
+          href: "/",
+          children: "Inertia React"
+        }), renderAuthOption()]
+      })
     })
   });
 }
@@ -235,7 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header {\n    width: 100%;\n    padding: 10px 12px;\n    background-color: rgb(236, 230, 230);\n}\n\n.header a {\n    color: black;\n    font-size: 18px;\n    text-decoration: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header {\n    width: 100%;\n    padding: 10px 12px;\n    background-color: rgb(236, 230, 230);\n}\n\n.header a {\n    color: black;\n    font-size: 18px;\n    text-decoration: none;\n}\n\n.header .authOption {\n    display: flex;\n    align-items: center;\n    gap: 20px;\n    flex-flow: row wrap;\n}\n\n.header .authOption > p {\n    margin: 0;\n}\n\n.header .authOption > button {\n    border: none;\n    background-color: rgb(138, 56, 197);\n    color: white;\n    padding: 2px 10px;\n}\n\n.header nav {\n    display: flex;\n    justify-content: space-between;\n    flex-flow: row wrap;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

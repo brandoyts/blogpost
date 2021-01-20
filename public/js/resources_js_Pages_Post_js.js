@@ -76,8 +76,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _css_CommentBox_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/CommentBox.css */ "./resources/css/CommentBox.css");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _css_CommentBox_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../css/CommentBox.css */ "./resources/css/CommentBox.css");
+
+
 
 
 
@@ -88,13 +91,16 @@ function CommentBox(_ref) {
   var postId = _ref.postId;
   var commentRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
 
+  var _usePage = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)(),
+      user = _usePage.props.user;
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var comment = {
       content: commentRef.current.value,
       postId: postId
     };
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/post/".concat(postId, "/comment"), comment);
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post("/post/".concat(postId, "/comment"), comment);
     commentRef.current.value = "";
   };
 
@@ -102,20 +108,29 @@ function CommentBox(_ref) {
     e.target.value = commentRef.current.value;
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-    className: "commentBox",
-    onSubmit: handleSubmit,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-      children: "Comments:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", {
-      name: "comment",
-      row: "3",
-      ref: commentRef,
-      onChange: handleInputChange
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-      type: "submit",
-      children: "Save Comment"
-    })]
+  var renderCommentBox = function renderCommentBox() {
+    return user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+      className: "commentBox",
+      onSubmit: handleSubmit,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+        children: "Comments:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", {
+        name: "comment",
+        row: "3",
+        ref: commentRef,
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+        type: "submit",
+        children: "Save Comment"
+      })]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+      href: "/login",
+      children: "Login to comment in this post"
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: renderCommentBox()
   });
 }
 
@@ -182,10 +197,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _CommentItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CommentItem */ "./resources/js/components/CommentItem.js");
-/* harmony import */ var _css_CommentList_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/CommentList.css */ "./resources/css/CommentList.css");
+/* harmony import */ var _CommentItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CommentItem */ "./resources/js/components/CommentItem.js");
+/* harmony import */ var _css_CommentList_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/CommentList.css */ "./resources/css/CommentList.css");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -207,8 +220,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
@@ -238,12 +249,15 @@ function CommentList(_ref) {
 
     initComments();
     listenToSocket();
+    return function () {
+      setInitialComment([]);
+    };
   }, []);
 
   var renderComments = function renderComments() {
     return initialComment.map(function (comment) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CommentItem__WEBPACK_IMPORTED_MODULE_4__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CommentItem__WEBPACK_IMPORTED_MODULE_2__.default, {
           comment: comment.content,
           date: comment.created_at,
           author: comment.user.name
@@ -286,22 +300,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header() {
+  var _usePage = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)(),
+      user = _usePage.props.user;
+
   var handleLogout = function handleLogout() {
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post("/logout");
     window.location = "/login";
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-    className: "header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.InertiaLink, {
-        href: "/",
-        children: "Home"
+  var renderAuthOption = function renderAuthOption() {
+    return user && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "authOption",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: user
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
         onClick: handleLogout,
         children: "Logout"
       })]
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    className: "header",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.InertiaLink, {
+          href: "/",
+          children: "Inertia React"
+        }), renderAuthOption()]
+      })
     })
   });
 }
@@ -433,7 +461,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header {\n    width: 100%;\n    padding: 10px 12px;\n    background-color: rgb(236, 230, 230);\n}\n\n.header a {\n    color: black;\n    font-size: 18px;\n    text-decoration: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header {\n    width: 100%;\n    padding: 10px 12px;\n    background-color: rgb(236, 230, 230);\n}\n\n.header a {\n    color: black;\n    font-size: 18px;\n    text-decoration: none;\n}\n\n.header .authOption {\n    display: flex;\n    align-items: center;\n    gap: 20px;\n    flex-flow: row wrap;\n}\n\n.header .authOption > p {\n    margin: 0;\n}\n\n.header .authOption > button {\n    border: none;\n    background-color: rgb(138, 56, 197);\n    color: white;\n    padding: 2px 10px;\n}\n\n.header nav {\n    display: flex;\n    justify-content: space-between;\n    flex-flow: row wrap;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

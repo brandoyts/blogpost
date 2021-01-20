@@ -8,6 +8,7 @@ use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Events\NewComment;
+use Inertia\Inertia;
 
 class CommentController extends Controller
 {

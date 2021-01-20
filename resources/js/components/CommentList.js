@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Inertia } from "@inertiajs/inertia";
-import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import CommentItem from "./CommentItem";
 import "../../css/CommentList.css";
 
@@ -20,6 +18,10 @@ function CommentList({ comments, postId }) {
 
         initComments();
         listenToSocket();
+
+        return () => {
+            setInitialComment([]);
+        };
     }, []);
 
     const renderComments = () => {
