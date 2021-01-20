@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
 import Layout from "../components/Layout.js";
 import PostList from "../components/PostList.js";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
 function Home({ posts }) {
     return (

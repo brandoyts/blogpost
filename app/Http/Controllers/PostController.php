@@ -12,14 +12,12 @@ class PostController extends Controller
     public function index(Post $post) {
         $posts = $post->with("user")->get();
 
-
         return Inertia::render("Home", ["posts" => $posts]);
     }
 
-    public function view (Post $post, $postId) {
-        $post = $post->where("id", $postId)->with("comments", "user")->first();
+    public function view (Post $post) {
 
-
+        $post = $post->with("comments", "user")->with("comments.user")->first();
 
         return Inertia::render("Post", ["post" => $post]);
     }

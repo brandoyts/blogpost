@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 
+Route::middleware('auth')->group(function() {
+    Route::get('/', [App\Http\Controllers\PostController::class, "index"]);
+    Route::get("/post/{post}", [App\Http\Controllers\PostController::class, "view"]);
+    Route::post('/post/{post}/comment', [App\Http\Controllers\CommentController::class, "store"]);
+});
 
-Route::get('/', [App\Http\Controllers\PostController::class, "index"]);
-Route::get("/post/{postId}", [App\Http\Controllers\PostController::class, "view"]);
 
 
 Auth::routes();

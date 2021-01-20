@@ -1,0 +1,15 @@
+.commentItem {
+    max-width: 450px;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.commentItem__info {
+    display: flex;
+    gap: 10px;
+}
+
+.commentItem__info > .comment__date {
+    color: rgb(114, 111, 111);
+}

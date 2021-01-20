@@ -1,15 +1,19 @@
 import React, { useRef } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import "../../css/CommentBox.css";
 
-function CommentBox() {
+function CommentBox({ postId }) {
     const commentRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const body = commentRef.current.value;
+        const comment = {
+            content: commentRef.current.value,
+            postId: postId,
+        };
 
-        // api.post(`/posts/${postId}/comment`, { body });
+        Inertia.post(`/post/${postId}/comment`, comment);
 
         commentRef.current.value = "";
     };

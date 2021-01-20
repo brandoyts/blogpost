@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import CommentBox from "../components/CommentBox";
+import CommentList from "../components/CommentList";
 import "../../css/Post.css";
 
 function Post({ post }) {
@@ -16,7 +17,8 @@ function Post({ post }) {
                 </div>
                 <div className="post__body">{post.content}</div>
                 <div className="post__footer__comments">
-                    <CommentBox />
+                    <CommentBox postId={post.id} />
+                    <CommentList postId={post.id} comments={post.comments} />
                 </div>
             </div>
         </Layout>
