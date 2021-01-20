@@ -1,0 +1,23 @@
+.commentBox > h3 {
+    color: #a1a1a1;
+    margin-bottom: 5px;
+}
+
+.commentBox > textarea {
+    padding: 8px 10px;
+    width: 100%;
+    height: 120px;
+    background-color: #e1e1e1;
+    border-radius: 3px;
+    border: 1px solid #ada9a9;
+}
+
+.commentBox > button {
+    background-color: rgb(49, 156, 49);
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    margin-top: 10px;
+}

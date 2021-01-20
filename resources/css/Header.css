@@ -1,0 +1,11 @@
+.header {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: rgb(236, 230, 230);
+}
+
+.header a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}

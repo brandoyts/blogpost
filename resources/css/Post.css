@@ -1,0 +1,35 @@
+.post__header {
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.post__header__info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.post__header__info > .post__date {
+    color: #a3a3a3;
+}
+
+.post__header__info > .post__status {
+    background-color: rgb(80, 177, 80);
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.post__body {
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 15px;
+}
+
+.post__footer__comments {
+    margin-top: 50px;
+}
+
+.post__footer__comments > div {
+    margin-bottom: 10px;
+}
